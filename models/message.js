@@ -6,7 +6,7 @@ const MessageSchema = new mongoose.Schema({
   title: { type: String, required: true, maxLength: 70 },
   body: { type: String, required: true, maxLength: 280 },
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  time: { type: Date, default: Date.now() },
+  time: { type: Date, default: Date.now, required: true },
 });
 
 MessageSchema.virtual('url').get(function () {

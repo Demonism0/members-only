@@ -62,7 +62,6 @@ exports.messageCreatePOST = [
         title: req.body.messageTitle,
         body: req.body.messageBody,
         user: req.user._id,
-        date: new Date(),
       });
       await message.save();
       res.redirect('/');
