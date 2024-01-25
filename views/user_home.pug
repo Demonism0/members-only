@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title 
+  div.profile-page 
+    if user 
+      div.profile-card 
+        div.profile-name Name: !{user.fullName}
+        div.profile-username Username: !{user.username}
+        div.profile-member Membership Status: !{user.memberStatus} 
+        
+
+    ul
+      if user
+        li 
+          a(href='/profile/join') Join the Club
+        li 
+          a(href='/profile/logout') Log Out
+      else
+        li 
+          a(href='/profile/sign-up') Sign Up 
+        li 
+          a(href='/profile/login') Log In

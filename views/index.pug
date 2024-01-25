@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+  h1= title
+  if user
+    div.message-create
+      a(href='/message/create') Create a new message
+
+  if messageList.length 
+    div.messages 
+      each message in messageList 
+        div.message-card
+          div.title= message.title 
+          div.body= message.body 
+          if user
+            if user.memberStatus == 'Member' || user.memberStatus == 'Admin'
+              div.author by !{message.user.username} 
+              div.timestamp= message.time_iso
+            if user.memberStatus == 'Admin'
+              div.delete 
+                a(href=message.url+'/delete') Delete Message
+  

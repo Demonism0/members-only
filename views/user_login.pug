@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title 
+  form(method='POST')
+    div.form-group
+      label(for='username') Username: 
+      input#username.form-control(type='text' name='username' required )
+    div.form-group
+      label(for='password') Password: 
+      input#password.form-control(type='password' name='password' required )
+    button(type='submit') Submit
+
+  if errors
+    ul 
+      for error in errors 
+        li!= error

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title 
+
+  if user
+    p Enter the passcode to join the club.
+
+    form(method='POST')
+      div.form-group
+        label(for='passcode') Passcode: 
+        input#passcode.form-control(type='text' name='passcode' required )
+      div.form-group
+        input#userid.form-control(type='hidden' name='userid' value=user._id )
+      button(type='submit') Submit
+
+    if errors
+      ul 
+        for error in errors 
+          li!= error.msg 
+  
+  else 
+    p Please log in before joining the club.
