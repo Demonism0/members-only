@@ -1,17 +1,17 @@
 extends layout
 
 block content
+  div.messages
+    p Do you really want to delete this Message?
 
-  p Do you really want to delete this Message?
+    div.message-card
+      div.title= message.title 
+      div.body= message.body
+      div.author by !{message.user.username}
+      div.timestamp= message.time_iso
 
-  div.message-card
-    div.title= message.title 
-    div.body= message.body
-    div.author by !{message.user.username}
-    div.timestamp= message.time_iso
+    form(method='POST')
+      div.form-group
+        input#messageid.form-control(type='hidden', name='messageid', value=message._id )
 
-  form(method='POST')
-    div.form-group
-      input#messageid.form-control(type='hidden', name='messageid', value=message._id )
-
-    button.btn.btn-primary(type='submit') Delete
+      button.btn.btn-primary(type='submit') Delete
